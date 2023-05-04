@@ -13,6 +13,9 @@
     <Filter Include="src\Balun\ImGui">
       <UniqueIdentifier>{183B5092-84C6-BD56-8DD7-404BF9E11957}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Balun\Renderer">
+      <UniqueIdentifier>{D46AFB90-C04E-BCE6-29AF-B63915B2A668}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -90,10 +93,16 @@
     <ClInclude Include="src\Balun\MouseButtonCodes.h">
       <Filter>src\Balun</Filter>
     </ClInclude>
+    <ClInclude Include="src\Balun\Renderer\GraphicsContext.h">
+      <Filter>src\Balun\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Balun\Renderer\Shader.h">
+      <Filter>src\Balun\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Balun\Window.h">
       <Filter>src\Balun</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
@@ -1353,10 +1362,21 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Balun\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Balun\Renderer\Renderer.h" />
+    <ClInclude Include="src\Balun\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Balun\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Balun\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Balun\Application.cpp">
       <Filter>src\Balun</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Balun\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Balun\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Balun\ImGui\ImGuiLayer.cpp">
       <Filter>src\Balun\ImGui</Filter>
@@ -1370,7 +1390,10 @@
     <ClCompile Include="src\Balun\Log.cpp">
       <Filter>src\Balun</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+    <ClCompile Include="src\Balun\Renderer\Shader.cpp">
+      <Filter>src\Balun\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
@@ -1382,5 +1405,13 @@
     <ClCompile Include="src\hzpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Balun\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Balun\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Balun\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Balun\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Balun\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>

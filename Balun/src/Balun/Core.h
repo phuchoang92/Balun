@@ -1,10 +1,14 @@
 #pragma once
 #ifdef BL_PLATFORM_WINDOWS
+#if BL_DYNAMIC_LINK
 	#ifdef BL_BUILD_DLL
 		#define BALUN_API  __declspec(dllexport)
 	#else
 		#define BALUN_API  __declspec(dllimport)
 	#endif // BL_BUILD_DLL
+#else
+	#define BALUN_API
+#endif
 #else
 	#error Balun is only support Windows
 #endif

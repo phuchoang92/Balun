@@ -5,7 +5,7 @@
 
 namespace Balun {
 
-	class BALUN_API  Layer
+	class BALUN_API Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");
@@ -14,6 +14,7 @@ namespace Balun {
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 		virtual void OnUpdate() {}
+		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
 		inline const std::string& GetName() const { return m_DebugName; }
@@ -22,4 +23,3 @@ namespace Balun {
 	};
 
 }
-

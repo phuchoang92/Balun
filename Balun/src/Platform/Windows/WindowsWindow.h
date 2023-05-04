@@ -3,6 +3,7 @@
 #include "Balun/Window.h"
 
 #include <GLFW/glfw3.h>
+#include <Balun/Renderer/GraphicsContext.h>
 
 namespace Balun {
 
@@ -28,6 +29,8 @@ namespace Balun {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
