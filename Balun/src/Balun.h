@@ -12,6 +12,14 @@
 
 #include "Balun/ImGui/ImGuiLayer.h"
 
+#include "Balun/Renderer/Renderer.h"
+#include "Balun/Renderer/RenderCommand.h"
+
+#include "Balun/Renderer/Buffer.h"
+#include "Balun/Renderer/VertexArray.h"
+#include "Balun/Renderer/Shader.h"
+
+#include "Balun/Renderer/OrthographicCamera.h"
 // ---Entry Point---------------------
 #include "Balun/EntryPoint.h"
 // -----------------------------------

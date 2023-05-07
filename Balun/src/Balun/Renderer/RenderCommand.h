@@ -1,6 +1,5 @@
 #pragma once
 #include "RendererAPI.h"
-#include <glad/glad.h>
 
 namespace Balun {
 

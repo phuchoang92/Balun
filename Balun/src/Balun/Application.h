@@ -8,8 +8,9 @@
 #include "Balun/ImGui/ImGuiLayer.h"
 #include "Balun/Events/ApplicationEvent.h"
 #include "Balun/Renderer/Shader.h"
-#include <Balun/Renderer/Buffer.h>
-#include <Balun/Renderer/VertexArray.h>
+#include "Balun/Renderer/Buffer.h"
+#include "Balun/Renderer/VertexArray.h"
+#include "Balun/Renderer/OrthographicCamera.h"
 
 namespace Balun {
 
@@ -37,12 +38,7 @@ namespace Balun {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<Shader> m_Shader;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVertexArray;
-
+		
 	private:
 		static Application* s_Instance;
 	};
