@@ -140,9 +140,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Balun.h" />
     <ClInclude Include="src\Balun\Application.h" />
     <ClInclude Include="src\Balun\Core.h" />
+    <ClInclude Include="src\Balun\Core\Timestep.h" />
     <ClInclude Include="src\Balun\EntryPoint.h" />
     <ClInclude Include="src\Balun\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Balun\Events\Event.h" />
@@ -589,6 +591,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Balun\Application.cpp" />
     <ClCompile Include="src\Balun\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Balun\ImGui\ImGuiLayer.cpp" />

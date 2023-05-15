@@ -2,12 +2,14 @@
 #include "Application.h"
 
 #include "Balun/Log.h"
-#include <Balun/Renderer/Buffer.h>
+#include "Balun/Renderer/Buffer.h"
 #include "Balun/Renderer/Renderer.h"
 
-#include <glad/glad.h>
+#include "glad/glad.h"
 #include "glm/glm.hpp"
 #include "Input.h"
+
+#include "glfw/glfw3.h"
 
 namespace Balun {
 
@@ -62,8 +64,13 @@ namespace Balun {
 	{
 		while (m_Running)
 		{
+
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

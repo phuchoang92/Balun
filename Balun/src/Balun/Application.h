@@ -7,6 +7,7 @@
 #include "Balun/Events/Event.h"
 #include "Balun/ImGui/ImGuiLayer.h"
 #include "Balun/Events/ApplicationEvent.h"
+#include "Balun/Core/Timestep.h"
 #include "Balun/Renderer/Shader.h"
 #include "Balun/Renderer/Buffer.h"
 #include "Balun/Renderer/VertexArray.h"
@@ -32,13 +33,12 @@ namespace Balun {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

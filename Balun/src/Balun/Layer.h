@@ -2,6 +2,7 @@
 
 #include "Balun/Core.h"
 #include "Balun/Events/Event.h"
+#include "Balun/Core/Timestep.h"
 
 namespace Balun {
 
@@ -13,7 +14,7 @@ namespace Balun {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
