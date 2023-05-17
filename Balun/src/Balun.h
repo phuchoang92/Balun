@@ -20,6 +20,7 @@
 
 #include "Balun/Renderer/Buffer.h"
 #include "Balun/Renderer/VertexArray.h"
+#include "Balun/Renderer/Texture.h"
 #include "Balun/Renderer/Shader.h"
 
 #include "Balun/Renderer/OrthographicCamera.h"

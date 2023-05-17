@@ -19,7 +19,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Balun::VertexBuffer> vertexBuffer;
+		Balun::Ref<Balun::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Balun::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Balun::BufferLayout layout = {
@@ -31,30 +31,31 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Balun::IndexBuffer> indexBuffer;
+		Balun::Ref<Balun::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Balun::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVertexArray.reset(Balun::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f, 
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		std::shared_ptr<Balun::VertexBuffer> squareVertexBuffer;
+		Balun::Ref<Balun::VertexBuffer> squareVertexBuffer;
 		squareVertexBuffer.reset(Balun::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 		squareVertexBuffer->SetLayout({
-			{ Balun::ShaderDataType::Float3, "a_Position" }
-			});
+			{ Balun::ShaderDataType::Float3, "a_Position" },
+			{ Balun::ShaderDataType::Float2, "a_TexCoord" }
+		});
 
 		m_SquareVertexArray->AddVertexBuffer(squareVertexBuffer);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Balun::IndexBuffer> squareIndexBuffer;
+		Balun::Ref<Balun::IndexBuffer> squareIndexBuffer;
 		squareIndexBuffer.reset(Balun::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVertexArray->SetIndexBuffer(squareIndexBuffer);
 
@@ -91,7 +92,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Balun::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Balun::Shader::Create("VertexColorTriangle", vertexSrc, fragmentSrc);
 
 		std::string blueShaderVertexSrc = R"(
 			#version 330 core
@@ -125,7 +126,15 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Balun::Shader::Create(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_FlatColorShader = Balun::Shader::Create("VertexColorSquare", blueShaderVertexSrc, blueShaderFragmentSrc);
+
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+
+		m_Texture = Balun::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_LogoTexture = Balun::Texture2D::Create("assets/textures/ChernoLogo.png");
+
+		std::dynamic_pointer_cast<Balun::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Balun::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Balun::Timestep ts) override
@@ -167,8 +176,14 @@ public:
 				Balun::Renderer::Submit(m_FlatColorShader, m_SquareVertexArray, transform);
 			}
 		}
-		Balun::Renderer::Submit(m_Shader, m_VertexArray);
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
+		m_Texture->Bind();
+		Balun::Renderer::Submit(textureShader, m_SquareVertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		//Balun::Renderer::Submit(m_Shader, m_VertexArray);
+		m_LogoTexture->Bind();
+		Balun::Renderer::Submit(textureShader, m_SquareVertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		Balun::Renderer::EndScene();
 	}
 
@@ -187,11 +202,14 @@ public:
 	{
 	}
 private:
-	std::shared_ptr<Balun::VertexArray> m_VertexArray;
-	std::shared_ptr<Balun::Shader> m_Shader;
 
-	std::shared_ptr<Balun::Shader> m_FlatColorShader;
-	std::shared_ptr<Balun::VertexArray> m_SquareVertexArray;
+	Balun::ShaderLibrary m_ShaderLibrary;
+	Balun::Ref<Balun::VertexArray> m_VertexArray;
+	Balun::Ref<Balun::Shader> m_Shader;
+
+	Balun::Ref<Balun::Shader> m_FlatColorShader;
+	Balun::Ref<Balun::VertexArray> m_SquareVertexArray;
+	Balun::Ref<Balun::Texture2D> m_Texture, m_LogoTexture;
 
 	Balun::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

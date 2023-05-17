@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Balun/vendor/GLFW/include"
 IncludeDir["Glad"] = "Balun/vendor/Glad/include"
 IncludeDir["ImGui"] = "Balun/vendor/imgui"
 IncludeDir["glm"] = "Balun/vendor/glm"
+IncludeDir["stb_image"] = "Balun/vendor/stb_image"
 
 include "Balun/vendor/GLFW"
 include "Balun/vendor/Glad"
@@ -39,6 +40,8 @@ project "Balun"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
@@ -55,7 +58,8 @@ project "Balun"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 
