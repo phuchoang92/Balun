@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Balun\OrthographicCameraController.h" />
     <ClInclude Include="src\Balun.h" />
     <ClInclude Include="src\Balun\Application.h" />
     <ClInclude Include="src\Balun\Core.h" />
@@ -594,6 +595,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Balun\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Balun\Application.cpp" />
     <ClCompile Include="src\Balun\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Balun\ImGui\ImGuiLayer.cpp" />

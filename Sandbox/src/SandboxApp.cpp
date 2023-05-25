@@ -4,12 +4,13 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "glm/gtc/matrix_transform.hpp"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include <Balun/OrthographicCameraController.h>
 
 class ExampleLayer : public Balun::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
 		m_VertexArray.reset(Balun::VertexArray::Create());
 
@@ -139,28 +140,12 @@ public:
 
 	void OnUpdate(Balun::Timestep ts) override
 	{
-		if (Balun::Input::IsKeyPressed(BL_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraSpeed * ts;
-		else if (Balun::Input::IsKeyPressed(BL_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraSpeed * ts;
-
-		if (Balun::Input::IsKeyPressed(BL_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraSpeed * ts;
-		else if (Balun::Input::IsKeyPressed(BL_KEY_UP))
-			m_CameraPosition.y += m_CameraSpeed * ts;
-
-		if (Balun::Input::IsKeyPressed(BL_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-		else if(Balun::Input::IsKeyPressed(BL_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
+		m_CameraController.OnUpdate(ts);
 
 		Balun::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Balun::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
-
-		Balun::Renderer::BeginScene(m_Camera);
+		Balun::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -196,6 +181,7 @@ public:
 
 	void OnEvent(Balun::Event& event) override
 	{
+		m_CameraController.OnEvent(event);
 	}
 
 	bool OnKeyPressedEvent(Balun::KeyPressedEvent& event)
@@ -211,13 +197,7 @@ private:
 	Balun::Ref<Balun::VertexArray> m_SquareVertexArray;
 	Balun::Ref<Balun::Texture2D> m_Texture, m_LogoTexture;
 
-	Balun::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraSpeed = 5.0f;
-
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
-
+	Balun::OrthographicCameraController m_CameraController;
 	glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
 };
 
