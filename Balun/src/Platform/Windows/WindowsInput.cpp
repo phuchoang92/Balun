@@ -3,7 +3,7 @@
 
 #include "WindowsInput.h"
 #include "hzpch.h"
-#include "Balun/Application.h"
+#include "Balun/Core/Application.h"
 #include "GLFW/glfw3.h"
 
 namespace Balun {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Renderer/OrthographicCamera.h"
-#include <Balun/Core/Timestep.h>
+#include "OrthographicCamera.h"
+#include "Balun/Core/Timestep.h"
 
 #include "Balun/Events/ApplicationEvent.h"
 #include "Balun/Events/MouseEvent.h"

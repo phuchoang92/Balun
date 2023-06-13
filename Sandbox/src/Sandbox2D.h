@@ -1,0 +1,24 @@
+#pragma once
+#include "Balun.h"
+
+class Sandbox2D: public Balun::Layer
+{
+public:
+	Sandbox2D();
+	virtual ~Sandbox2D() = default;
+
+	virtual void OnAttach() override;
+	virtual void OnDetach() override;
+	void OnUpdate(Balun::Timestep ts) override;
+	virtual void OnImGuiRender() override;
+	void OnEvent(Balun::Event& event) override;
+private:
+	Balun::Ref<Balun::Shader> m_FlatColorShader;
+	Balun::Ref<Balun::VertexArray> m_SquareVertexArray;
+	Balun::Ref<Balun::Texture2D> m_CheckboardTexture;
+	Balun::OrthographicCameraController m_CameraController;
+
+
+	glm::vec4 m_SquareColor = {0.2f, 0.3f, 0.8f, 1.0f};
+};
+

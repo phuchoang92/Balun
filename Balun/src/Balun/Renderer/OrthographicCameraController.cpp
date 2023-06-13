@@ -1,8 +1,8 @@
 #include "hzpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Balun/Input.h"
-#include <Balun/KeyCodes.h>
+#include "Balun/Core/Input.h"
+#include <Balun/Core/KeyCodes.h>
 
 namespace Balun {
 

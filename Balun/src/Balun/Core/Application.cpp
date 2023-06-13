@@ -1,7 +1,7 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Balun/Log.h"
+#include "Balun/Core/Log.h"
 #include "Balun/Renderer/Buffer.h"
 #include "Balun/Renderer/Renderer.h"
 

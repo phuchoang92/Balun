@@ -1,7 +1,7 @@
 #pragma once
 
 #include "hzpch.h"
-#include "Balun/Core.h"
+#include "Balun/Core/Core.h"
 #include "Balun/Events/Event.h"
 
 namespace Balun 

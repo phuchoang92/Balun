@@ -1,18 +1,21 @@
 #include <Balun.h>
 
 #include "imgui/imgui.h"
-#include <glm/gtc/type_ptr.hpp>
+#include "glm/gtc/type_ptr.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "Platform/OpenGL/OpenGLShader.h"
-#include <Balun/OrthographicCameraController.h>
+#include "Balun/Renderer/OrthographicCameraController.h"
+#include "Sandbox2D.h"
+
+#include "Balun/Core/EntryPoint.h"
 
 class ExampleLayer : public Balun::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_CameraController(1280.0f / 720.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f,true)
 	{
-		m_VertexArray.reset(Balun::VertexArray::Create());
+		m_VertexArray = Balun::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -36,7 +39,7 @@ public:
 		indexBuffer.reset(Balun::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVertexArray.reset(Balun::VertexArray::Create());
+		m_SquareVertexArray = Balun::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -206,12 +209,12 @@ class Sandbox : public Balun::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
 	{
-
 	}
 
 };

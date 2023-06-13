@@ -140,33 +140,34 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Balun\OrthographicCameraController.h" />
+    <ClInclude Include="src\Balun\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Balun.h" />
-    <ClInclude Include="src\Balun\Application.h" />
-    <ClInclude Include="src\Balun\Core.h" />
+    <ClInclude Include="src\Balun\Core\Application.h" />
+    <ClInclude Include="src\Balun\Core\Core.h" />
+    <ClInclude Include="src\Balun\Core\EntryPoint.h" />
+    <ClInclude Include="src\Balun\Core\Input.h" />
+    <ClInclude Include="src\Balun\Core\KeyCodes.h" />
+    <ClInclude Include="src\Balun\Core\Layer.h" />
+    <ClInclude Include="src\Balun\Core\LayerStack.h" />
+    <ClInclude Include="src\Balun\Core\Log.h" />
+    <ClInclude Include="src\Balun\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Balun\Core\Timestep.h" />
-    <ClInclude Include="src\Balun\EntryPoint.h" />
+    <ClInclude Include="src\Balun\Core\Window.h" />
     <ClInclude Include="src\Balun\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Balun\Events\Event.h" />
     <ClInclude Include="src\Balun\Events\KeyEvent.h" />
     <ClInclude Include="src\Balun\Events\MouseEvent.h" />
     <ClInclude Include="src\Balun\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Balun\Input.h" />
-    <ClInclude Include="src\Balun\KeyCodes.h" />
-    <ClInclude Include="src\Balun\Layer.h" />
-    <ClInclude Include="src\Balun\LayerStack.h" />
-    <ClInclude Include="src\Balun\Log.h" />
-    <ClInclude Include="src\Balun\MouseButtonCodes.h" />
     <ClInclude Include="src\Balun\Renderer\Buffer.h" />
     <ClInclude Include="src\Balun\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Balun\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Balun\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Balun\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Balun\Renderer\Renderer.h" />
     <ClInclude Include="src\Balun\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Balun\Renderer\Shader.h" />
     <ClInclude Include="src\Balun\Renderer\Texture.h" />
     <ClInclude Include="src\Balun\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Balun\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -595,15 +596,16 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Balun\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\Balun\Application.cpp" />
+    <ClCompile Include="src\Balun\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Balun\Core\Application.cpp" />
+    <ClCompile Include="src\Balun\Core\Layer.cpp" />
+    <ClCompile Include="src\Balun\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Balun\Core\Log.cpp" />
     <ClCompile Include="src\Balun\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Balun\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Balun\Layer.cpp" />
-    <ClCompile Include="src\Balun\LayerStack.cpp" />
-    <ClCompile Include="src\Balun\Log.cpp" />
     <ClCompile Include="src\Balun\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Balun\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Balun\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Balun\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Balun\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Balun\Renderer\RendererAPI.cpp" />

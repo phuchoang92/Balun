@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Balun/Core.h"
+#include "Balun/Core/Core.h"
 #include "Balun/Events/Event.h"
 #include "Balun/Core/Timestep.h"
 

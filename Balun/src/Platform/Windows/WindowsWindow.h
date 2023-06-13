@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Balun/Window.h"
+#include "Balun/Core/Window.h"
 
 #include <GLFW/glfw3.h>
 #include <Balun/Renderer/GraphicsContext.h>

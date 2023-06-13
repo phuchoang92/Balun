@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Balun/Log.h"
+#include "Balun/Core/Log.h"
 
 #ifdef BL_PLATFORM_WINDOWS
 	#include <Windows.h>

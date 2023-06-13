@@ -2,20 +2,21 @@
 
 // For use by Balun applications
 
-#include "Balun/Application.h"
-#include "Balun/Layer.h"
-#include "Balun/Log.h"
+#include "Balun/Core/Application.h"
+#include "Balun/Core/Layer.h"
+#include "Balun/Core/Log.h"
 
 #include "Balun/Core/Timestep.h"
 
-#include "Balun/Input.h"
-#include "Balun/KeyCodes.h"
-#include "Balun/MouseButtonCodes.h"
-#include "Balun/OrthographicCameraController.h"
+#include "Balun/Core/Input.h"
+#include "Balun/Core/KeyCodes.h"
+#include "Balun/Core/MouseButtonCodes.h"
+#include "Balun/Renderer/OrthographicCameraController.h"
 
 #include "Balun/ImGui/ImGuiLayer.h"
 
 #include "Balun/Renderer/Renderer.h"
+#include "Balun/Renderer/Renderer2D.h"
 #include "Balun/Renderer/RenderCommand.h"
 
 #include "Balun/Renderer/Buffer.h"
@@ -24,6 +25,3 @@
 #include "Balun/Renderer/Shader.h"
 
 #include "Balun/Renderer/OrthographicCamera.h"
-// ---Entry Point---------------------
-#include "Balun/EntryPoint.h"
-// -----------------------------------

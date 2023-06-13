@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Balun/Input.h"
+#include "Balun/Core/Input.h"
 
 namespace Balun {
 	class BALUN_API WindowsInput : public Input
