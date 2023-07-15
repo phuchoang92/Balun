@@ -131,6 +131,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Example\ExampleLayer.h" />
+    <ClInclude Include="src\Game\Color.h" />
+    <ClInclude Include="src\Game\GameLayer.h" />
+    <ClInclude Include="src\Game\Level.h" />
+    <ClInclude Include="src\Game\ParticleSystem.h" />
+    <ClInclude Include="src\Game\Player.h" />
+    <ClInclude Include="src\Game\Random.h" />
+    <ClInclude Include="src\Sandbox2D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Example\ExampleLayer.cpp" />
+    <ClCompile Include="src\Game\GameLayer.cpp" />
+    <ClCompile Include="src\Game\Level.cpp" />
+    <ClCompile Include="src\Game\ParticleSystem.cpp" />
+    <ClCompile Include="src\Game\Player.cpp" />
+    <ClCompile Include="src\Game\Random.cpp" />
     <ClCompile Include="src\Sandbox2D.cpp" />
     <ClCompile Include="src\SandboxApp.cpp" />
   </ItemGroup>
@@ -138,9 +154,6 @@
     <ProjectReference Include="..\Balun\Balun.vcxproj">
       <Project>{175DE00C-8371-08BE-4CF3-AB1DB8C604EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Sandbox2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

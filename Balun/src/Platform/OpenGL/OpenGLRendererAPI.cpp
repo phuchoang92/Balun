@@ -7,6 +7,7 @@ namespace Balun {
 	
 	void OpenGLRendererAPI::Init()
 	{
+		BL_PROFILE_FUNCTION();
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -28,9 +29,10 @@ namespace Balun {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void Balun::OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
+	void Balun::OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount)
 	{
-		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffers()->GetCount(),GL_UNSIGNED_INT, nullptr);
+		uint32_t count = indexCount ? vertexArray->GetIndexBuffers()->GetCount() : indexCount;
+		glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, nullptr); 
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 

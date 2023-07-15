@@ -28,26 +28,31 @@ namespace Balun {
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
+		BL_PROFILE_FUNCTION();
 		glCreateVertexArrays(1, &m_RendererID);
 	}
 
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
+		BL_PROFILE_FUNCTION();
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 
 	void OpenGLVertexArray::Bind() const
 	{
+		BL_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 	}
 
 	void OpenGLVertexArray::Unbind() const
 	{
+		BL_PROFILE_FUNCTION();
 		glBindVertexArray(0);
 	}
 
 	void OpenGLVertexArray::AddVertexBuffer(const std::shared_ptr<VertexBuffer>& vertexBuffer)
 	{
+		BL_PROFILE_FUNCTION();
 		BL_CORE_ASSERT(vertexBuffer->GetLayout().GetElement().size(), "Vertex Buffer has no layout!");
 
 		glBindVertexArray(m_RendererID);
@@ -74,6 +79,7 @@ namespace Balun {
 
 	void OpenGLVertexArray::SetIndexBuffer(const std::shared_ptr<IndexBuffer>& indexBuffer)
 	{
+		BL_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 

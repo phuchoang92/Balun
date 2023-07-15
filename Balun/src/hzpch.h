@@ -14,6 +14,7 @@
 #include <unordered_set>
 
 #include "Balun/Core/Log.h"
+#include "Balun/Debug/Instrumentor.h"
 
 #ifdef BL_PLATFORM_WINDOWS
 	#include <Windows.h>

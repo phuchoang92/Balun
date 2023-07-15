@@ -9,6 +9,7 @@ namespace Balun {
 
 	void Renderer::Init()
 	{
+		BL_PROFILE_FUNCTION();
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

@@ -19,6 +19,7 @@ namespace Balun {
 
 	Application::Application()
 	{
+		BL_PROFILE_FUNCTION();
 		BL_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -39,18 +40,26 @@ namespace Balun {
 
 	void Application::PushLayer(Layer* layer)
 	{
+		BL_PROFILE_FUNCTION();
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		BL_PROFILE_FUNCTION();
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
+		BL_PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
@@ -65,6 +74,7 @@ namespace Balun {
 
 	void Application::Run()
 	{
+		BL_PROFILE_FUNCTION();
 		while (m_Running)
 		{
 
@@ -95,6 +105,7 @@ namespace Balun {
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		BL_PROFILE_FUNCTION();
 		if (e.GetWidth() == 0 || e.GetHeight() == 0) 
 		{
 			m_Minimized = true;
